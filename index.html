@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <title>Вход на сайт</title>
+
+  <style>
+
+    body {
+
+      font-family: sans-serif;
+
+      padding: 20px;
+
+    }
+
+    .hidden {
+
+      display: none;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+ 
+
+  <div id="login-section">
+
+    <h2>Авторизация</h2>
+
+    <input type="text" id="username" placeholder="Логин" /><br><br>
+
+    <input type="password" id="password" placeholder="Пароль" /><br><br>
+
+    <button onclick="login()">Войти</button>
+
+    <p id="error" style="color: red;"></p>
+
+  </div>
+
+ 
+
+  <div id="secret-section" class="hidden">
+
+    <h2>Добро пожаловать!</h2>
+
+    <p>Вы вошли как <span id="logged-user"></span> 🎉</p>
+
+  </div>
+
+ 
+
+  <script>
+
+    // Список допустимых аккаунтов
+
+    const users = [
+
+      { username: "user1", password: "1111" },
+
+      { username: "admin", password: "adminpass" },
+
+      { username: "guest", password: "guest123" }
+
+    ];
+
+ 
+
+    function login() {
+
+      const usernameInput = document.getElementById("username").value;
+
+      const passwordInput = document.getElementById("password").value;
+
+      const error = document.getElementById("error");
+
+ 
+
+      const found = users.find(user =>
+
+        user.username === usernameInput && user.password === passwordInput
+
+      );
+
+ 
+
+      if (found) {
+
+        document.getElementById("login-section").classList.add("hidden");
+
+        document.getElementById("secret-section").classList.remove("hidden");
+
+        document.getElementById("logged-user").textContent = found.username;
+
+      } else {
+
+        error.textContent = "Неверный логин или пароль";
+
+      }
+
+    }
+
+  </script>
+
+ 
+
+</body>
+
+</html>

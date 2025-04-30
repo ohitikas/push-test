@@ -24,6 +24,9 @@
     }) (window, document, "script",
     "https://esputnik.com/scripts/v1/public/scripts?apiKey=...&domain=...",
     "es");
+
+    // Указываем путь к сервис-воркеру, если он в той же папке
+    es("serviceWorkerPath", "/push-esputnik-sw.js");
     es("pushOn");
   </script>
 </head>
